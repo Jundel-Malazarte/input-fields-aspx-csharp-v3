@@ -4,115 +4,166 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Details to table</title>
-    <link rel="icon" href="./img/Dotnet.png" />
+    <link rel="icon" href="../image/Dotnet.png">
+    <!-- Bootstrap CSS from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Custom Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         body {
+            margin: 0;
+            padding: 0;
             background-color: #eceff1;
-        }
-        /*  */
-        #form1 {
-            position: relative;  
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Container Style */
-        .container {
-            margin: 0;
-            margin-top: 25%;
-            padding: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .form1 {
+            margin-top: 10%;
+            width: 850px;
+            padding: 25px;
             background-color: #fff;
             border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Save Button */
+        /* Save and Clear Buttons */
+        #SubmitButton, #ClearButton {
+            margin: 10px 0;
+            width: 100px;
+        }
+
         #SubmitButton {
-            margin: 5px;
-            padding: 5px;
-            height: 30px;
-            width: 70px;
-            border: none;
-            border-radius: 5px;
             background-color: #3d5afe;
-            color: #eceff1;
-            font-weight: 500;
+            border-color: #3d5afe;
+            color: #fff;
+        }
+        #SubmitButton:hover {
+            background-color: #3d5afe;
+            opacity: 0.8;
+        }
+
+        #ClearButton {
+            background-color: #ff6d00;
+            border-color: #ff6d00;
+            color: #fff;
+        }
+        #ClearButton:hover {
+            background-color: #ff6d00;
+            opacity: 0.8;
         }
 
         table {
-            margin-top: 20px;
-            border-collapse: collapse;
+            margin-top: 2px;
             width: 100%;
         }
-        table, th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: left;
-        }   
+
         th {
-            background-color: #f2f2f2;
+            background-color: #212121;
+            color: #fff;
         }
+
+        .btnUpdate {
+            background-color: #3d5afe;
+            width: 80px;
+            color: #fff;
+        }
+        .btnUpdate:hover {
+            background-color: #3d5afe;
+            color: #fff;
+            opacity: 0.8;
+        }
+
+        /* Delete */
+        .btnDelete {
+            background-color: #ff3d00;
+            width: 80px;
+            color: #fff;
+        }
+        .btnDelete:hover {
+            background-color: #ff3d00;
+            color: #fff;
+            opacity: 0.8s;
+        }
+
 
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="container" runat="server">
-            <div>
-                <asp:Label AssociatedControlID="Name" Text="Name:" runat="server"></asp:Label>
-                <asp:TextBox ID="Name" runat="server"></asp:TextBox>
+    <form id="container" runat="server" class="container mt-5">
+        <div class="form1 mx-auto col-md-6">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <asp:Label AssociatedControlID="Name" Text="Name:" runat="server" CssClass="form-label"></asp:Label>
+                    <asp:TextBox ID="Name" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
             </div>
-            <div>
-                <asp:Label AssociatedControlID="Address" Text="Address:" runat="server"></asp:Label>
-                <asp:TextBox ID="Address" runat="server"></asp:TextBox>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <asp:Label AssociatedControlID="Address" Text="Address:" runat="server" CssClass="form-label"></asp:Label>
+                    <asp:TextBox ID="Address" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
             </div>
-            <div>
-                <asp:Label AssociatedControlID="Age" Text="Age:" runat="server"></asp:Label>
-                <asp:TextBox ID="Age" runat="server"></asp:TextBox>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <asp:Label AssociatedControlID="Age" Text="Age:" runat="server" CssClass="form-label"></asp:Label>
+                    <asp:TextBox ID="Age" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
             </div>
-            <div class="gender" runat="server">
-                <asp:Label Text="Gender:" runat="server"></asp:Label><br />
-                <asp:RadioButton ID="rdoMale" GroupName="GenderGroup" Text="Male" runat="server"/>
-                <asp:RadioButton ID="rdoFemale" GroupName="GenderGroup" Text="Female" runat="server"/>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <asp:Label Text="Gender" runat="server" CssClass="form-label"></asp:Label><br />
+                    <asp:RadioButton ID="rdoMale" GroupName="GenderGroup" Text="Male" runat="server" class="form-check-input" />
+                    <asp:RadioButton ID="rdoFemale" GroupName="GenderGroup" Text="Female" runat="server" class="form-check-input" />
+                </div>
             </div>
-            <div>
-                <asp:Button ID="SubmitButton" Text="Save" runat="server" OnClick="SubmitButton_Click" />
+            <div class="row">
+                <div class="col-md-12">
+                    <asp:Button ID="SubmitButton" Text="Save" runat="server" CssClass="btn btn-primary" OnClick="SubmitButton_Click" />
+                    <asp:Button ID="ClearButton" Text="Clear" runat="server" CssClass="btn btn-warning" OnClick="ClearButton_Click" />
+                </div>
             </div>
 
             <!-- Table output -->
-            <div class="table" runat="server">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <asp:Repeater ID="DetailsRepeater" runat="server">
-                            <ItemTemplate>
-                                <tr>
-                                    <td><%# Eval("id") %></td>
-                                    <td><%# Eval("name") %></td>
-                                    <td><%# Eval("address") %></td>
-                                    <td><%# Eval("age") %></td>
-                                    <td><%# Eval("gender") %></td>
-                                    <td>
-                                        <asp:Button ID="btnUpdate" Text="Update" runat="server" CommandArgument='<%# Eval("id") %>' OnCommand="UpdateRecord" />
-                                        <asp:Button ID="btnDelete" Text="Delete" runat="server" CommandArgument='<%# Eval("id") %>' OnCommand="DeleteRecord" />
-                                    </td>
-                                </tr>
-                            </ItemTemplate>
-                        </asp:Repeater>
-                    </tbody>
-                </table>
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <asp:Repeater ID="DetailsRepeater" runat="server">
+                                <ItemTemplate>
+                                    <tr>
+                                        <td><%# Eval("id") %></td>
+                                        <td><%# Eval("name") %></td>
+                                        <td><%# Eval("address") %></td>
+                                        <td><%# Eval("age") %></td>
+                                        <td><%# Eval("gender") %></td>
+                                        <td>
+                                            <asp:Button ID="btnUpdate" CssClass="btn btnUpdate" Text="Update" runat="server" CommandArgument='<%# Eval("id") %>' OnCommand="UpdateRecord" />
+                                            <asp:Button ID="btnDelete" CssClass="btn btnDelete" Text="Delete" runat="server" CommandArgument='<%# Eval("id") %>' OnCommand="DeleteRecord" />
+                                        </td>
+                                    </tr>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </form>
+
+    <!-- Bootstrap JS from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

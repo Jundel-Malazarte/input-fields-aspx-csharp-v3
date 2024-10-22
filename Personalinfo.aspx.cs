@@ -100,6 +100,12 @@ public partial class Personalinfo : System.Web.UI.Page
         rdoFemale.Checked = false;
     }
 
+    // This fields is for clearing the fields
+    protected void ClearButton_Click(object sender, EventArgs e)
+    {
+        ClearFormFields(); // Clear all form fields
+    }
+
     // Handle the Update Button Command: Populate the form fields with the selected record's data
     protected void UpdateRecord(object sender, CommandEventArgs e)
     {
