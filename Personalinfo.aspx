@@ -85,7 +85,7 @@
         .btnDelete:hover {
             background-color: #ff3d00;
             color: #fff;
-            opacity: 0.8s;
+            opacity: 0.8;
         }
 
 
