@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class Personalinfo : System.Web.UI.Page
 {
-    private string connectionString = ConfigurationManager.ConnectionStrings["DetailsDBConnectionString"].ConnectionString;
+    private string connectionString = ConfigurationManager.ConnectionStrings["DetailsDBConnectionString"].ConnectionString; // Creating a connection using connection string
 
     // A variable to track the currently selected record for updating
     private static int updateId = -1;
